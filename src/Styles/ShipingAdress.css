@@ -1,0 +1,83 @@
+.shipingAdressPage {
+    display: flex;
+    background-color: var(--bg-color);
+    align-items: center;
+    justify-content: center;
+}
+.input-adress {
+    margin: 20px 0;
+}
+.checkout-adress-items{
+    flex-direction: row;
+    margin: 0;
+}
+.rowline-bar{
+    margin-right: 10px;
+}
+.checkout-main-sidebar-item{
+    justify-content: center;
+}
+
+.Adress-form{
+    /* width: 30vw; */
+    height: auto;
+    /* border: 2px solid var(--light-border); */
+    /* box-shadow: 6px  7px 5px  rgba(0, 0, 0, 0.197); */
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+.Adress-form h2 {
+    font-size: 22px;
+    margin-top: 20px;
+}
+.Adress-form h3 {
+    color: var(--light-red-color);
+    margin: 15px;
+}
+
+.shiping-btn {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: var(--light-red-color);
+    padding: 5px;
+    transition: .4s;
+
+}
+.shiping-btn:hover{
+    background-color: var(--red-color);
+}
+.shiping-message {
+    border: none;
+}
+.ship-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.ship-btn button {
+    margin: 5px;
+    padding: 3px 10px;
+    color: white;
+    background-color: var(--light-red-color);
+    border: none;
+    border-radius: 5px;
+
+}
+
+@media (max-width:576px ) {
+    .Adress-form h2{
+        font-size: 19px;
+        
+    }
+    .Adress-form {
+        height: 70vh;
+    }
+    
+}

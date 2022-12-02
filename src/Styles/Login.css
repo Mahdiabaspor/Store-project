@@ -1,0 +1,174 @@
+
+.Login-form h2 ,
+.register-form h2{
+    color: var(--red-color);
+}
+
+.log-out ,
+.message-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 70.2vh;
+    gap: 30px;
+    /* background-color: #1d2b3a; */
+    margin: auto;
+    /* width: 30%; */
+    padding: 20px 0;
+    border-radius: 6px;
+    /* border: 2px solid var(--light-border); */
+    box-shadow: 6px 7px 5px 5px rgba(0, 0, 0, 0.197);
+}
+
+.log-out h2{
+    color: var(--primary-color);
+    margin: 20px;
+}
+.log-out p {
+    margin: 20px;
+    font-style: 17px;
+    color: var(--secedery-color);
+}
+.log-out span{
+    color: var(--red-color);
+    font-size: 25px;
+    font-weight: 600;
+}
+.log-out a {
+    color: var(--light-red-color);
+}
+.log-out a:hover {
+    color: var(--red-color);
+}
+
+
+.log-out button:hover{
+    color: #1d2b3a;
+    background:#00dfc4;
+} 
+
+*{
+    margin: 0;
+    padding: 0;
+    
+    box-sizing: border-box;
+}
+
+
+.login,
+.signup{
+height: auto;
+    
+}
+.Login-form,
+.register-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 70.2vh;
+    gap: 30px;
+    background-color: var(--bg-color);
+    margin: 4vh auto;
+    /* width: 30%; */
+    padding: 20px 0;
+    border-radius: 6px;
+    border: 1px solid var(--light-border);
+    box-shadow: 6px  7px 5px  rgba(0, 0, 0, 0.197);
+}
+
+
+.inputBox{
+    position: relative;
+    width: 250px;
+}
+ 
+.inputBox input{
+    padding: 10px;
+    width: 100%;
+    border:1px solid var(--light-border);
+    background-color: var(--bg-color);
+    border-radius: 5px;
+    outline: none;
+    color: var(--primary-color);
+    font-size: 1em;
+}
+.inputBox label{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    font-size: 1em;
+    pointer-events: none;
+    color: var(--secedery-color);
+    text-transform: uppercase;
+    transition: .4s;
+}
+
+.inputBox input:valid ~ label,
+.inputBox input:focus ~ label{
+    color:var(--primary-color);
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 2px 10px;
+    background: var(--bg-color);
+    border-left: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
+    letter-spacing: 2px;
+
+}
+.inputBox input:valid,
+.inputBox input:focus{
+    border: 1px solid var(--primary-color);
+}
+
+
+.inputBox:nth-child(2) input:valid ~ label,
+.inputBox:nth-child(2) input:focus ~ label{
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.Login-btn,
+.log-out button,
+.register-btn{
+    padding: 6px 15px;
+    font-size: 20px;
+    background: var(--light-red-color);
+    border-radius: 10px;
+    color: white;
+    border: none;
+    transition: ease .3s;
+    
+}
+.Login-btn:hover,
+.register-btn:hover{
+    background:var(--red-color);
+}
+
+.Login-form a ,
+.register-form a{
+    color: var(--secedery-color);
+    transition: .3s;
+}
+
+.Login-form a:hover ,
+.register-form a:hover{
+    color: var(--primary-color);
+}
+.Login-form span,
+.register-form span {
+    color: var(--light-red-color);
+}
+
+@media (max-width: 576px) {
+    .Login-form {
+        border: none;
+        box-shadow: none;
+    }
+    .register-form{
+        border: none;
+        box-shadow: none;
+    }
+}

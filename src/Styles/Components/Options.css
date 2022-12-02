@@ -1,0 +1,33 @@
+.options .col {
+    display: flex;
+
+    align-items: center;
+    flex-direction: column;
+}
+
+.options i {
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    margin: 10px 0;
+    color: white;
+}
+@media (max-width: 721px) {
+    .opt-ptext{
+        font-size: 11px;
+    }
+    .opt .col{
+        padding: 0;
+    }
+    .opt .col i{
+        width: 40px;
+        height: 40px;
+    }
+    .opt .col p{
+        text-align: center;
+    }
+}

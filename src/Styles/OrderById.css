@@ -1,0 +1,44 @@
+.ss{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 6vh;
+}
+
+.shiping-and-tprices{
+    border: 2px solid var(--light-border);
+    padding: 25px;
+    border-radius: 10px;
+}
+.shiping-adress-detailss h3{
+    color: var(--light-red-color);
+}
+
+.shiping-adress-detailss p{
+    color: var(--primary-color);
+}
+
+.tprice-shipings p{
+    color: var(--primary-color);
+}
+:root{
+    --bg-header-color:#EDF2F4;
+    --bg-color: rgb(255,254,254);
+    --light-border:rgb(0,0,0,0.25);
+    --primary-color: #2B2D42;
+    --secedery-color: #8D99AE;
+    --red-color: #D90429;
+    --light-red-color: #EF233C;
+}
+.item-checkout  {
+align-items: center;
+}
+.item-checkout  img{
+width: 10%;
+}
+.red-qty{
+    color: white;
+    background-color: #D90429;
+    padding: 5px 9px;
+    border-radius: 3px;
+}

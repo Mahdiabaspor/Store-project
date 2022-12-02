@@ -1,0 +1,54 @@
+.offer-baner .baner {
+    height: 80px;
+    background-color: var(--bg-header-color);
+    background-image: url("https://www.digikala.com/statics/img/svg/typography/freshPattern.svg");
+    border-radius: 10px;
+}
+
+.offer-baner .baner {
+    /* display: flex; */
+    align-items: center;
+}
+
+.offer-baner .baner .item {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 100px;
+}
+
+.offer-baner .baner .head {
+    font-weight: bold;
+    color: var(--grean-color);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.offer-baner .baner .see-more {
+    justify-content: center;
+    align-items: center;
+}
+
+.offer-baner .baner .see-more a {
+    background-color: white;
+    color: var(--grean-color);
+    border-radius: 100px;
+    padding: 10px 20px;
+}
+
+.offer-baner .item img {
+    height: 100%;
+    border-radius: 100px;
+}
+
+.offer-baner .item .percent {
+    border-radius: 100px;
+    padding: 0 1px;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: var(--red-color);
+    color: white;
+}

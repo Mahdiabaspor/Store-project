@@ -1,0 +1,99 @@
+
+.register-form h2 {
+    color: wheat;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    
+    box-sizing: border-box;
+}
+
+.signup{
+height: auto;
+    
+}
+.register-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 70.2vh;
+    gap: 30px;
+    background-color: var(--bg-header-color);
+    margin: auto;
+    width: 30%;
+    padding: 20px 0;
+    border-radius: 6px;
+    border: 2px solid #00dfc4;
+    box-shadow: 6px  7px 5px  rgba(0, 0, 0, 0.197);
+
+}
+.inputBox{
+    position: relative;
+    width: 250px;
+}
+ 
+.inputBox input{
+    padding: 10px;
+    width: 100%;
+    border:1px solid rgba(255,255,255,0.25);
+    background-color: #1d2b3a;
+    border-radius: 5px;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+}
+.inputBox label{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    font-size: 1em;
+    pointer-events: none;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    transition: .4s;
+}
+
+.inputBox input:valid ~ label,
+.inputBox input:focus ~ label{
+    color:#00dfc4;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 2px 10px;
+    background: #1d2b3a;
+    border-left: 1px solid #00dfc4;
+    border-right: 1px solid #00dfc4;
+    letter-spacing: 2px;
+
+}
+.inputBox input:valid,
+.inputBox input:focus{
+    border: 1px solid #00dfc4;
+}
+
+
+.inputBox:nth-child(2) input:valid ~ label,
+.inputBox:nth-child(2) input:focus ~ label{
+    color: #1d2b3a;
+    background-color: #00dfc4;
+    border-radius: 2px;
+}
+
+.register-btn{
+    padding: 10px 20px;
+    font-size: 20px;
+    background: #1d2b3a;
+    border: 1px solid #00dfc4;
+    border-radius: 10px;
+    color: #00dfc4;
+    
+}
+.register-form a {
+    color: white;
+}
+.register-form span {
+    color: #00dfc4;
+}
