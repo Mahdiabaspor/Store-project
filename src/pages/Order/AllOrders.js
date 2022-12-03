@@ -31,6 +31,7 @@ const AllOrders = () => {
             </div>
         
         ))}
+        {!Orders && <h3>you have no orders</h3>}
     </div> );
 }
  
