@@ -58,7 +58,7 @@ const ChangePassword = () => {
                     required="required"
                     name="oldPassword"
                     id="oldPassword"
-                    type="oldPassword"
+                    type="password"
                     value={oldPassword}
                     onChange={(e) => setoldPassword(e.target.value)}
                   />
@@ -71,7 +71,7 @@ const ChangePassword = () => {
                     required="required"
                     name="newPassword"
                     id="newPassword"
-                    type="newPassword"
+                    type="password"
                     value={newPassword}
                     onChange={(e) => setnewPassword(e.target.value)}
                   />

@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
   let [massage, setmassage] = useState(false);
   const [isSignup,setisSignup]=useState(false)
   const [user, setuser] = useState(curentUser);
+  const [Suser,setSuser]=useState(null)
   const [error, seterror] = useState(null);
   const [pending, setpending] = useState(false);
 
@@ -63,8 +64,10 @@ const AuthProvider = ({ children }) => {
 
     // check if response
     if (res) {
+      console.log(res.data)
       setmassage(true);
       setisSignup(true)
+      setSuser(res.data.status);
     }
     if (err) {
       setuser(null);
@@ -111,6 +114,7 @@ const AuthProvider = ({ children }) => {
     signup,
     logout,
     massage,
+    Suser,
   };
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };

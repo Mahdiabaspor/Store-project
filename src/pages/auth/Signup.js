@@ -5,6 +5,7 @@ import '../../Styles/Login.css'
 import { useCookies} from "react-cookie";
 import {  useNavigate  } from "react-router-dom";
 import WelcomeRegister from "../../components/Messages/WellcomeRegister";
+import Loading from "../../components/Loading";
 
 const Signup = () => {
   const [cookies] = useCookies(["token"]);
@@ -21,7 +22,7 @@ const Signup = () => {
   const [email,setemail]=useState('')
   const [username,setusername]=useState('')
   const [password,setpassword]=useState('')
-  const {signup ,isSignup}=useAuth()
+  const {signup ,Suser,pending}=useAuth()
   const [Error, setError] = useState({})
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const Signup = () => {
       err.noAccses = true
   }
     // check username
-    if (username.length <= 5 && username.length >= 1) {
+    if (username.length < 5 && username.length >= 1) {
       err.username = "username must be more than 5 charecters"
     }
 
@@ -75,9 +76,9 @@ const Signup = () => {
   }
   return (
     <section className="signup">
-    {isSignup && <WelcomeRegister/>}
-
-    {!isSignup && (
+    {pending ? <Loading/> : (<div>
+      
+    {!Suser ? (
             <div className="back">
             <form className="register-form">
               <h2>Please Register</h2>
@@ -148,7 +149,14 @@ const Signup = () => {
             <Link to="/login">you already have an accont? <span>login</span></Link>
           </form>
           </div>
+    ) :(
+      <div className="log-out">
+      <h2>Wellcome to Family :{")"}</h2>
+      <Link to="/login">go to login</Link>
+    </div>
     )}
+    </div>)}
+
 
 
     </section>

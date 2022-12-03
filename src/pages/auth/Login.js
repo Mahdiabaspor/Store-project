@@ -18,7 +18,7 @@ const Login = () => {
       navigate("/error-400");
     }
     // eslint-disable-next-line
-  }, [user]);
+  }, []);
 
   const [Error, setError] = useState({});
   const [email, setemail] = useState("");
@@ -30,7 +30,7 @@ const Login = () => {
     if (email.length === 0 || password.length === 0){
         err.noAccses = true
     }
-    if (email.length <= 5 && email.length >= 1) {
+    if (email.length < 5 && email.length >= 1) {
       err.email = "username must be more than 5 charecters"
     }
     
@@ -56,47 +56,56 @@ const Login = () => {
 
   return (
     <section className="login">
-      {pending && <Loading />}
-      {!cookies.token && !pending ? (
-        <div className="back">
-          <form className="Login-form" onSubmit={SubmitHandeler}>
-            <h2>Please Login!</h2>
-            <div className="inputBox">
-              <input
-                autoComplete="off"
-                name="username"
-                id="username"
-                type="text"
-                value={email}
-                required="required"
-                onChange={(e) => setemail(e.target.value)}
-              />
-              <label htmlFor="username">Username or Email</label>
-              {Error?.email && <p className="Err-msg text-danger ">{Error.email}</p>}
-            </div>
-            <div className="inputBox">
-              <input
-                autoComplete="off"
-                required="required"
-                name="password"
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setpassword(e.target.value)}
-              />
-              <label htmlFor="password">Password</label>
-              {Error?.password && <p className="Err-msg text-danger ">{Error.password}</p>}
-            </div>
+      {pending ? <Loading /> : (
+        <div>
 
-            <input type="submit" value="submit" className="Login-btn" />
-            <Link to="/register">
-              you dont have account? <span>register</span>
-            </Link>
-          </form>
+          {!user ? (
+            <div className="back">
+              <form className="Login-form" onSubmit={SubmitHandeler}>
+                <h2>Please Login!</h2>
+                <div className="inputBox">
+                  <input
+                    autoComplete="off"
+                    name="username"
+                    id="username"
+                    type="text"
+                    value={email}
+                    // required="required"
+                    onChange={(e) => setemail(e.target.value)}
+                  />
+                  <label htmlFor="username">Username or Email</label>
+                  {Error?.email && <p className="Err-msg text-danger ">{Error.email}</p>}
+                </div>
+                <div className="inputBox">
+                  <input
+                    autoComplete="off"
+                    required="required"
+                    name="password"
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setpassword(e.target.value)}
+                  />
+                  <label htmlFor="password">Password</label>
+                  {Error?.password && <p className="Err-msg text-danger ">{Error.password}</p>}
+                </div>
+    
+                <input type="submit" value="submit" className="Login-btn" />
+                <Link to="/register">
+                  you dont have account? <span>register</span>
+                </Link>
+              </form>
+            </div>
+          ) : (
+            <div className="log-out">
+            <h2>Wellcome!</h2>
+            <Link to="/">home</Link>
+          </div>
+          )}
         </div>
-      ) : null}
+      )}
       {error && error.message}
-      {user && user.name}
+
     </section>
   );
 };
