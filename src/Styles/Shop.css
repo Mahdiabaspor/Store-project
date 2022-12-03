@@ -43,7 +43,7 @@
     margin: 0px;
     padding: 0;
     border: 1px solid var(--light-border);
-    height: 70vh;
+    height: 400px;
     /* margin: 2px; */
     /* background-color: var(--bg-header-color); */
     /* border-radius: 5px; */
@@ -151,7 +151,7 @@
         justify-content: space-between;
     }
     .product {
-        height: 30vh;
+        height: 150px;
     }
     .p-and-button-shop{
         display: flex;
