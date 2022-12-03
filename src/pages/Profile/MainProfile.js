@@ -8,6 +8,7 @@ import useProfile from "../../Hooks/useProfile";
 import { Image } from "react-bootstrap";
 
 import "../../Styles/Profile.css";
+import { useState } from "react";
 const MainProfile = () => {
 
   const sidebar = useRef()
@@ -15,16 +16,22 @@ const MainProfile = () => {
   const { Cart, Getcard } = Usecart();
   const { Orders, GetAllOrders } = UseOrder();
   //massage import<
-  const massage = true;
+  const [WarningMsg , setWarningMsg]=useState(false)
   //massage import>
   useEffect(() => {
     GetProfile();
     Getcard();
     GetAllOrders();
+    if( !user?.city || !user?.firstname || !user?.lastname || !user?.gender){
+      setWarningMsg(true);
+      console.log(user.city)
+
+    }
   }, []);
   if (user) {
     console.log(user);
   }
+
 
   return (
     <div className="user-profile container-fluid">
@@ -69,6 +76,8 @@ const MainProfile = () => {
                 <p>{user.mobile}</p>
                 </div>
               </div>
+              {user?.firstname &&
+              
               <div className="profile-detail row  mx-1 my-3">
                 <div className="profile-key col-5 ">
                 <h4>Firstname: </h4>
@@ -77,6 +86,9 @@ const MainProfile = () => {
                 <p>{user.firstname}</p>
                 </div>
               </div>
+              }
+              {user?.lastname &&
+              
               <div className="profile-detail row  mx-1 my-3">
                 <div className="profile-key col-5 ">
                 <h4>Lastname: </h4>
@@ -85,6 +97,9 @@ const MainProfile = () => {
                 <p>{user.lastname}</p>
                 </div>
               </div>
+            }
+              {user?.gender &&
+              
               <div className="profile-detail row  mx-1 my-3">
                 <div className="profile-key col-5 ">
                 <h4>Gender: </h4>
@@ -93,6 +108,9 @@ const MainProfile = () => {
                 <p>{user.gender}</p>
                 </div>
               </div>
+            }
+              {user?.age &&
+              
               <div className="profile-detail row  mx-1 my-3">
                 <div className="profile-key col-5 ">
                 <h4>Age: </h4>
@@ -101,6 +119,9 @@ const MainProfile = () => {
                 <p>{user.age}</p>
                 </div>
               </div>
+            }
+              {user?.city &&
+              
               <div className="profile-detail row  mx-1 my-3">
                 <div className="profile-key col-5 ">
                 <h4>City: </h4>
@@ -109,15 +130,20 @@ const MainProfile = () => {
                 <p>{user.city}</p>
                 </div>
               </div>
+            }
 
             </div>
           </div>
         </div>
         <div className="section-right col-xl-9 ">
-          <div className="alarams my-3 mx-0 mx-md-5 d-flex align-items-center  ">
+          { !user?.city && (         
+            <div className="alarams my-3 mx-0 mx-md-5 d-flex align-items-center">
             <i className="fa-solid fa-circle-exclamation fs-5 fs-md-1"></i>
-            <p className="text-sm-small  p-2">for your own secirty do the tasks</p>
-          </div>
+            <p className="text-sm-small  p-2">please Complite your profile</p>
+          </div>)
+          
+
+          }
           <div className="content rounded p-2 mx-0 mx-md-5">
             <div className="order-title row d-flex align-items-center   my-2 mb-4">
               <div className="col-9">
@@ -137,7 +163,7 @@ const MainProfile = () => {
                   <div className="d-flex flex-column justify-content-center mx-3">
                     <h4>Deliverd</h4>
                     <p>
-                      <span>10</span> deliverd
+                      <span>{Orders?.length}</span> deliverd
                     </p>
                   </div>
                   <Image src="https://www.digikala.com/statics/img/svg/status-delivered.svg" />
@@ -148,7 +174,7 @@ const MainProfile = () => {
                   <div className="d-flex flex-column justify-content-center mx-3">
                     <h4>Process</h4>
                     <p>
-                      <span>3</span> in progerss
+                      <span>{Cart?.items.length}</span> in progerss
                     </p>
                   </div>
                   <Image src="https://www.digikala.com/statics/img/svg/status-processing.svg" />

@@ -47,6 +47,9 @@ const Card = () => {
           <h3 className="text-start">Card</h3>
         </div>
       </div>
+        {Cart?.items.length == 0 &&
+            <h4 className="text-center">Card is empty !</h4> 
+          }
       <div className="cart-main container-fluid ">
         <div className="row flex-column flex-md-row ">
           <div className="cart-items col col-md-8 p-0 ">
@@ -77,9 +80,9 @@ const Card = () => {
       </div>
       <div className="postioner">
         <div className="Cart-page-handeler">
-          {Cart && Cart.items.length == 0 ? null : (
-            <button onClick={NextPageHandler}>Next</button>
-          )}
+          {!Cart?.items.length == 0 &&
+            <button onClick={NextPageHandler}>Next</button> 
+          }
         </div>
       </div>
     </section>

@@ -2,14 +2,18 @@ import { useState } from "react";
 import API from "../API/API";
 
 const useProducts = () => {
+
     const [Products,setProducts]=useState(null)
     const [Product,setProduct]=useState(null)
     const [pending, setpending] = useState(false)
     const [Err, setErr] = useState(null)
-    const Getproducts = async(page="1" , limit ='12')=>{
+
+    const Getproducts = async (/* page="1" , limit ='12' */) => {
 
         setpending(true)
+
         const {res,err}= await API(`product/`,'GET' )
+
         if(res){
             console.log(res.data)
             setErr(null)
@@ -19,13 +23,16 @@ const useProducts = () => {
             setErr(err)
             setProducts(null)
         }
+
         setpending(false)
     }
 
-    const GetproductsBYid = async(id)=>{
+    const GetproductsBYid = async (id) => {
 
         setpending(true)
+
         const {res,err}= await API(`product/${id}`,'GET' )
+
         if(res){
             setErr(null)
             setProduct(res.data)
@@ -34,10 +41,11 @@ const useProducts = () => {
             setProduct(null)
             setErr(err)
         }
+
         setpending(false)
     }
     
-    return { Products, Product , pending , Err , Getproducts,GetproductsBYid } ;
+    return { Products, Product, pending, Err, Getproducts, GetproductsBYid } ;
 }
  
 export default useProducts;

@@ -20,10 +20,36 @@ const Login = () => {
     // eslint-disable-next-line
   }, [user]);
 
+  const [Error, setError] = useState({});
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+
+
+  useEffect(()=>{
+    let err = {};
+    if (email.length === 0 || password.length === 0){
+        err.noAccses = true
+    }
+    if (email.length <= 5 && email.length >= 1) {
+      err.email = "username must be more than 5 charecters"
+    }
+    
+    const passRegex = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})$/
+    if (!passRegex.test(password) && password.length >= 1) {
+      err.password = "Password has Invalid format"
+    }
+    setError(err)
+  },[email,password])
+
+
   const SubmitHandeler = async (e) => {
     e.preventDefault();
+
+    setError({})
+
+    if (Object.keys(Error).length !== 0) {
+      return;
+    }
 
     await login(email, password);
   };
@@ -46,6 +72,7 @@ const Login = () => {
                 onChange={(e) => setemail(e.target.value)}
               />
               <label htmlFor="username">Username or Email</label>
+              {Error?.email && <p className="Err-msg text-danger ">{Error.email}</p>}
             </div>
             <div className="inputBox">
               <input
@@ -58,6 +85,7 @@ const Login = () => {
                 onChange={(e) => setpassword(e.target.value)}
               />
               <label htmlFor="password">Password</label>
+              {Error?.password && <p className="Err-msg text-danger ">{Error.password}</p>}
             </div>
 
             <input type="submit" value="submit" className="Login-btn" />

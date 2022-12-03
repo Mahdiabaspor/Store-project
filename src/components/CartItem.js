@@ -30,7 +30,7 @@ const Cartitem = ({ id, quantity }) => {
         <div className="cartitem row">
           {/* <img src={Product.image} alt="productimg" /> */}
           <div className="col-4">
-            <img className="m-0 w-100 h-100"
+            <img className="m-0 w-100 h-100 crt-img"
               src="https://images-na.ssl-images-amazon.com/images/I/61QGMX0Qy6L._AC._SR360,460.jpg"
               alt="productimg"
             />

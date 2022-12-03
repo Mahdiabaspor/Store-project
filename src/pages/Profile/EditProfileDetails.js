@@ -1,16 +1,56 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import useProfile from "../../Hooks/useProfile";
 
 const EditProfile = () => {
-  const [firstname, setfirstname] = useState(null);
-  const [lastname, setlastname] = useState(null);
-  const [gender, setgender] = useState(null);
-  const [age, setage] = useState(null);
-  const [city, setcity] = useState(null);
+  const [firstname, setfirstname] = useState("");
+  const [lastname, setlastname] = useState("");
+  const [gender, setgender] = useState('male');
+  const [age, setage] = useState("");
+  const [city, setcity] = useState("");
   const {user,EditProfile,pending}=useProfile()
+  const [Error, setError] = useState({})
+
+  useEffect(() => {
+    let err = {}
+
+    if (firstname?.length === 0 || lastname?.length === 0 || city?.length=== 0 || age?.length === 0){
+      err.noAccses="true"
+    }
+
+  
+    // check address
+    if (firstname.length < 3 && firstname.length >= 1) {
+      err.firstname = "at least 3 characters"
+    }
+    if (lastname.length < 3 && lastname.length >= 1) {
+      err.lastname = "at least 3 characters"
+    }
+
+
+
+    const numberOnly = /^[0-9]*$/
+    if (!numberOnly.test(age) && age.length >= 1 ||  2 < age.length ) {
+      err.age = "invalid age number"
+    }
+
+
+
+    if (city.length < 3 && city.length >= 1) {
+      err.city = "at least 3 characters"
+    }
+    
+
+    setError(err)
+  }, [firstname, lastname, age, city])
   const submitHandeler = async(e) => {
+    if (Object.keys(Error).length !== 0) {
+      console.log(Error)
+      return
+    }
+
     e.preventDefault();
     const data = {
       firstname ,
@@ -33,7 +73,7 @@ const EditProfile = () => {
 
       <div className="edit-profile-form">
         <h4>Edit profile</h4>
-        <form className="edit-profile-form">
+        <form className="edit-profile-form" onSubmit={submitHandeler}>
           <div className="inputBox">
             <input
               autoComplete="off"
@@ -45,6 +85,8 @@ const EditProfile = () => {
               onChange={(e) => setfirstname(e.target.value)}
             />
             <label htmlFor="firstname">firstname</label>
+            {Error?.firstname && <p className="Err-msg text-danger ">{Error.firstname}</p>}
+
           </div>
           <div className="inputBox">
             <input
@@ -57,17 +99,14 @@ const EditProfile = () => {
               onChange={(e) => setlastname(e.target.value)}
             />
             <label htmlFor="lastname">lastname</label>
+            {Error?.lastname && <p className="Err-msg text-danger ">{Error.lastname}</p>}
+
           </div>
           <div className="inputBox">
-            <input
-              autoComplete="off"
-              required="required"
-              name="gender"
-              id="gender"
-              type="gender"
-              value={gender}
-              onChange={(e) => setgender(e.target.value)}
-            />
+          <select value={gender}  onChange={(e) => setgender(e.target.value)}>
+          <option value="male">male</option>
+          <option value="femaile">femaile</option>
+          </select>
             <label htmlFor="gender">gender</label>
           </div>
           <div className="inputBox">
@@ -81,6 +120,8 @@ const EditProfile = () => {
               onChange={(e) => setage(e.target.value)}
             />
             <label htmlFor="age">age</label>
+            {Error?.age && <p className="Err-msg text-danger ">{Error.age}</p>}
+
           </div>
           <div className="inputBox">
             <input
@@ -93,8 +134,9 @@ const EditProfile = () => {
               onChange={(e) => setcity(e.target.value)}
             />
             <label htmlFor="city">city</label>
+            {Error?.city && <p className="Err-msg text-danger ">{Error.city}</p>}
           </div>
-          <button onClick={submitHandeler}>EditProfile</button>
+          <input type="submit" value="submit" className="Login-btn" />
         </form>
       </div>
         ):(

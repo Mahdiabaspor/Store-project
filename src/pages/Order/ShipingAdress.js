@@ -8,12 +8,45 @@ import "../../Styles/ShipingAdress.css"
 // shiping adress page
 const ShipingAdressfrom = () => {
     // states
-    const [address,setaddress]= useState(null);
-    const [phone,setphone]= useState(null);
-    const [postalCode,setpostalCode]= useState(null);
-    const [city,setcity]= useState(null);
+    const [address,setaddress]= useState('');
+    const [phone,setphone]= useState('');
+    const [postalCode,setpostalCode]= useState('');
+    const [city,setcity]= useState('');
     const [shipingAdressPage,setshipingAdressPage]= useState(null);
+    const [Error, setError] = useState({})
 
+    useEffect(() => {
+      let err = {}
+
+      if (address.length === 0 || phone.length === 0 || postalCode.length=== 0 || city.length === 0){
+        err.noAccses="true"
+      }
+
+    
+      // check address
+      if (address.length <= 10 && address.length >= 1) {
+        err.address = "address must be more than 10 charecters"
+      }
+  
+
+
+      const phoneRegex = /^09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}$/
+      if (!phoneRegex.test(phone) && phone.length >= 1) {
+        err.phone = "invalid phone number"
+      }
+  
+      // check Postal_Code
+      const PostalRegex = /^(1[0-9]|[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}$/
+      if (!PostalRegex.test(postalCode) && postalCode.length >= 1) {
+        err.postal = "PostalCode has  Invalid format"
+      }
+      if (city.length <= 4 && city.length >= 1) {
+        err.city = "city must be more than 4 charecters"
+      }
+      
+  
+      setError(err)
+    }, [address, phone, postalCode, city])
     // get token from cookies
     const cookies = new Cookies()
     const token = cookies.get('token')
@@ -31,6 +64,11 @@ const ShipingAdressfrom = () => {
     
     // next page handeler after write shiping adress
     const NextHandler = (e)=>{
+
+      if (Object.keys(Error).length !== 0) {
+        console.log(Error)
+        return
+      }
 
       e.preventDefault();
       const ShipingAdress = {
@@ -85,6 +123,8 @@ const ShipingAdressfrom = () => {
                 onChange={(e) => setaddress(e.target.value)}
               />
               <label htmlFor="adress">Adress</label>
+              {Error?.address && <p className="Err-msg text-danger ">{Error.address}</p>}
+
             </div>
             <div className="inputBox input-adress ">
               <input
@@ -97,6 +137,7 @@ const ShipingAdressfrom = () => {
                 onChange={(e) => setcity(e.target.value)}
               />
               <label htmlFor="city">City</label>
+              {Error &&  Error.city && <p className="Err-msg text-danger ">{Error.city}</p>}
             </div>
             <div className="inputBox input-adress">
               <input
@@ -109,6 +150,9 @@ const ShipingAdressfrom = () => {
                 onChange={(e) => setphone(e.target.value)}
               />
               <label htmlFor="phone">Phone</label>
+              {Error &&  Error.phone && <p className="Err-msg text-danger ">{Error.phone}</p>}
+
+              
             </div>
             <div className="inputBox input-adress">
               <input
@@ -121,6 +165,8 @@ const ShipingAdressfrom = () => {
                 onChange={(e) => setpostalCode(e.target.value)}
               />
               <label htmlFor="postalCode">postalCode</label>
+              {Error &&  Error.postal && <p className="Err-msg text-danger ">{Error.postal}</p>}
+
             </div>
             <button className="shiping-btn" onClick={NextHandler}>Next</button>
             </div>

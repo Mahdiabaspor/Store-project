@@ -3,6 +3,8 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import "../../Styles/Login.css";
+
+
 const Logout = () => {
   
   const navigate = useNavigate()
@@ -20,7 +22,6 @@ const Logout = () => {
   };
   return (
     <div className="back">
-      {/* {!cookies.token && Navigate('/login')} */}
       {cookies.token && (
         <div>
         <div className="log-out">
@@ -32,7 +33,6 @@ const Logout = () => {
         </div>
         </div>
       )}
-      ;
     </div>
   );
 };

@@ -146,3 +146,8 @@
         overflow-x: hidden;
     }
  }
+ @media (min-width: 768px) {
+    .crt-img{
+        width: 70% !important;
+    }
+ }

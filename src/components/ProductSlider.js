@@ -61,7 +61,7 @@ const ProductSlider = ({ Items }) => {
                     <h6>{item.name}</h6>
                   </div>
                   <div className="slidder-offer-price-btn">
-                    <p>Price: <span className="crossed-price">{item.price}</span>   <span className="offer-price">{item.price - 0.2 * item.price} T</span> </p>
+                    <p>Price: <span className="crossed-price">{item.price}</span>   <span className="offer-price">{Math.floor(item.price - 0.2 * item.price)} T</span> </p>
                   </div>
                 </div>
                 </Link>

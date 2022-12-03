@@ -9,30 +9,70 @@ import WelcomeRegister from "../../components/Messages/WellcomeRegister";
 const Signup = () => {
   const [cookies] = useCookies(["token"]);
   const navigate = useNavigate()
+
   useEffect(()=>{
       if (cookies.token){
         navigate('/error-400')
       }
       // eslint-disable-next-line
-    },[cookies.token])
-    const [mobile,setmobile]=useState('')
-    const [email,setemail]=useState('')
-    const [username,setusername]=useState('')
-    const [password,setpassword]=useState('')
-    const {signup ,isSignup}=useAuth()
+  },[cookies.token])
+  
+  const [mobile,setmobile]=useState('')
+  const [email,setemail]=useState('')
+  const [username,setusername]=useState('')
+  const [password,setpassword]=useState('')
+  const {signup ,isSignup}=useAuth()
+  const [Error, setError] = useState({})
 
-    const clickhandeler =async (e)=>{
-        e.preventDefault();
-        var data = {
-          username: username,
-          email: email,
-          password: password,
-          mobile: mobile
-        };
-        console.log(data)
-        await signup(data)
-        
+  useEffect(() => {
+    let err = {}
+    if (email.length === 0 || password.length === 0 || username.length=== 0 || mobile.length === 0){
+      err.noAccses = true
+  }
+    // check username
+    if (username.length <= 5 && username.length >= 1) {
+      err.username = "username must be more than 5 charecters"
     }
+
+    // check email
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (!emailRegex.test(email) && email.length >= 1) {
+      err.email = "Email is invalid"
+    }
+
+    // check password
+    const passRegex = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})$/
+    if (!passRegex.test(password) && password.length >= 1) {
+      err.password = "Password has  Invalid format"
+    }
+    
+    // check mobile
+    const phoneRegex = /^09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}$/
+    if (!phoneRegex.test(mobile) && mobile.length >= 1) {
+      err.phone = "invalid phone number"
+    }
+
+    setError(err)
+  }, [username, password, email, mobile])
+
+  const clickhandeler = async (e) => {
+    e.preventDefault();
+
+    if (Object.keys(Error).length !== 0) {
+      console.log(Error)
+      return
+    }
+
+    var data = {
+      username,
+      email,
+      password,
+      mobile
+    };
+    
+    console.log(data)
+    await signup(data)
+  }
   return (
     <section className="signup">
     {isSignup && <WelcomeRegister/>}
@@ -45,7 +85,7 @@ const Signup = () => {
 
             <input
             autoComplete="off"
-            required="required"
+            // required="required"
               type="email"
               value={email}
               name="email"
@@ -53,6 +93,7 @@ const Signup = () => {
               onChange={(e) => setemail(e.target.value)}
             />
             <label htmlFor="emial">Email </label>
+            {Error?.email && <p className="Err-msg text-danger ">{Error.email}</p>}
               </div>
               <div className="inputBox">
 
@@ -66,6 +107,7 @@ const Signup = () => {
               onChange={(e) => setusername(e.target.value)}
             />
             <label htmlFor="username">Username </label>
+            {Error?.username && <p className="Err-msg text-danger ">{Error.username}</p>}
               </div>
               <div className="inputBox">
 
@@ -79,6 +121,7 @@ const Signup = () => {
               onChange={(e) => setpassword(e.target.value)}
             />
             <label htmlFor="password">Password </label>
+            {Error?.password && <p className="Err-msg text-danger ">{Error.password}</p>}
               </div>
               <div className="inputBox">
                 
@@ -92,6 +135,7 @@ const Signup = () => {
               onChange={(e) => setmobile(e.target.value)}
             />
             <label htmlFor="mobile">Mobile</label>
+            {Error?.phone && <p className="Err-msg text-danger ">{Error.phone}</p>}
               </div>
             <button
               className="register-btn"

@@ -4,7 +4,7 @@ import UseOrder from "../../Hooks/Order";
 import "../../Styles/AllOrders.css";
 
 const AllOrders = () => {
-    const {Orders,GetAllOrders,pending,err} =UseOrder()
+    const {Orders, GetAllOrders} =UseOrder()
 
     useEffect(()=>{
         GetAllOrders()
