@@ -24,7 +24,7 @@ const MainProfile = () => {
 
       var userValidator =localStorage.getItem('user') ?? null
       if(!userValidator){
-          navigate("/login")
+        navigate("/forbiden")
       }
 
     GetProfile();

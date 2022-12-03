@@ -12,7 +12,7 @@ const OrderById = () => {
 
   useEffect(() => {
     if(!userValidator){
-      navigate("/login")
+      navigate("/forbiden")
   }
     GetOrderBYId(id);
   }, []);

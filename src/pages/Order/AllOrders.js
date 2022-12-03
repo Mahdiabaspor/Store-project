@@ -8,7 +8,7 @@ const AllOrders = () => {
     const navigate = useNavigate()
     var userValidator =localStorage.getItem('user') ?? null
     if(!userValidator){
-        navigate("/login")
+        navigate("/forbiden")
     }
 
     useEffect(()=>{

@@ -17,6 +17,7 @@ import ChangePassword from "../pages/Profile/ChangePassword";
 import EditProfile from "../pages/Profile/EditProfileDetails";
 import UploadProfileImage from "../pages/Profile/UploadProfileImage";
 import Home from "../pages/Home";
+import PleaseLogin from "../components/Messages/PleaseLogin"
 
 const MainRoutes = () => {
   return (
@@ -37,6 +38,8 @@ const MainRoutes = () => {
       <Route path="profile/upload-profile-img" element={<UploadProfileImage />} />
       <Route path="profile/change-password" element={<ChangePassword />} />
       <Route path="profile/setting" element={<EditProfile />} />
+      <Route path="/forbiden" element={< PleaseLogin/>} />
+
     </Routes>
   );
 };

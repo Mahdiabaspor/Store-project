@@ -24,7 +24,7 @@ const CheckOut = () => {
   useEffect(() => {
     var userValidator =localStorage.getItem('user') ?? null
     if(!userValidator){
-        navigate("/login")
+      navigate("/forbiden")
     }
     if (ShipingAdress) {
       setShippingInfo({
