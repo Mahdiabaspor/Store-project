@@ -14,6 +14,16 @@ const ShipingAdressfrom = () => {
     const [city,setcity]= useState('');
     const [shipingAdressPage,setshipingAdressPage]= useState(null);
     const [Error, setError] = useState({})
+    // hooks
+    const navigate = useNavigate()
+    useEffect(()=>{
+
+      var userValidator =localStorage.getItem('user') ?? null
+      if(!userValidator){
+          navigate("/login")
+      }
+    },[])
+
 
     useEffect(() => {
       let err = {}
@@ -51,8 +61,7 @@ const ShipingAdressfrom = () => {
     const cookies = new Cookies()
     const token = cookies.get('token')
 
-    // hooks
-    const navigate = useNavigate()
+
 
     // check and get shiping adress exist
     const shipingAdress=JSON.parse(localStorage.getItem('ShipingAdress')) || null

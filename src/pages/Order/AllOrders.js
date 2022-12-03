@@ -1,10 +1,15 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseOrder from "../../Hooks/Order";
 import "../../Styles/AllOrders.css";
 
 const AllOrders = () => {
     const {Orders, GetAllOrders} =UseOrder()
+    const navigate = useNavigate()
+    var userValidator =localStorage.getItem('user') ?? null
+    if(!userValidator){
+        navigate("/login")
+    }
 
     useEffect(()=>{
         GetAllOrders()

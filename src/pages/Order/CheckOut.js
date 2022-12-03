@@ -1,5 +1,5 @@
 //components
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CheckOutItems from "../../components/CheckOutItems";
 import Loading from "../../components/Loading";
 import UseOrder from "../../Hooks/Order";
@@ -17,8 +17,15 @@ const CheckOut = () => {
 
   const { Order, SubmitOrder, pending } = UseOrder();
 
+  const navigate = useNavigate()
+
+
   const OrderItems = [];
   useEffect(() => {
+    var userValidator =localStorage.getItem('user') ?? null
+    if(!userValidator){
+        navigate("/login")
+    }
     if (ShipingAdress) {
       setShippingInfo({
         address: ShipingAdress.address,

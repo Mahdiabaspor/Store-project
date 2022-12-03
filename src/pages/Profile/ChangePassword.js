@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
-import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import useProfile from "../../Hooks/useProfile";
+import { useNavigate , Link  } from "react-router-dom";
 
 
 const ChangePassword = () => {
@@ -9,6 +9,15 @@ const ChangePassword = () => {
   const [oldPassword, setoldPassword] = useState('');
   const [newPassword, setnewPassword] = useState('');
   const { user, ChangePassword, pending } = useProfile();
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    var userValidator =localStorage.getItem('user') ?? null
+    if(!userValidator){
+        navigate("/login")
+    }
+  }, [])
+  
 
   useEffect(()=>{
     let err = {};

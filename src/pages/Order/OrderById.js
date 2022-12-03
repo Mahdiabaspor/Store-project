@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CheckOutItems from "../../components/CheckOutItems";
 import UseOrder from "../../Hooks/Order";
 import "../../Styles/OrderById.css"
@@ -7,7 +7,13 @@ import "../../Styles/OrderById.css"
 const OrderById = () => {
   const { id } = useParams();
   const { Order, GetOrderBYId } = UseOrder();
+  const navigate = useNavigate()
+  var userValidator =localStorage.getItem('user') ?? null
+
   useEffect(() => {
+    if(!userValidator){
+      navigate("/login")
+  }
     GetOrderBYId(id);
   }, []);
   if (Order) {

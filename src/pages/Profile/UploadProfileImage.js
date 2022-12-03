@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import API from "../../API/API";
 import Loading from "../../components/Loading";
 import useProfile from "../../Hooks/useProfile";
@@ -9,6 +10,15 @@ const UploadProfileImage = () => {
   const [pending, setpending] = useState(null);
   const [err, seterr] = useState(null);
   const [image, setimage] = useState(null);
+  const navigate = useNavigate()
+  useEffect(()=>{
+    var userValidator =localStorage.getItem('user') ?? null
+    if(!userValidator){
+        navigate("/login")
+    }
+
+  },[])
+
   const submitHandeler = async () => {
     const formData = new FormData();
     formData.append("profile-image", image);

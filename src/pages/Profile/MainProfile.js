@@ -1,5 +1,5 @@
 import { useEffect ,useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { Usecart } from "../../Context/Cartcontext";
 import UseOrder from "../../Hooks/Order";
@@ -15,10 +15,18 @@ const MainProfile = () => {
   const { GetProfile, user, pending } = useProfile();
   const { Cart, Getcard } = Usecart();
   const { Orders, GetAllOrders } = UseOrder();
+  const navigate = useNavigate()
   //massage import<
   const [WarningMsg , setWarningMsg]=useState(false)
   //massage import>
   useEffect(() => {
+
+
+      var userValidator =localStorage.getItem('user') ?? null
+      if(!userValidator){
+          navigate("/login")
+      }
+
     GetProfile();
     Getcard();
     GetAllOrders();
@@ -35,6 +43,8 @@ const MainProfile = () => {
 
   return (
     <div className="user-profile container-fluid">
+      {pending ? <Loading/> : (
+
       <div className="row">
       <div className="sideba col-xl-3 d-flex justify-content-center">
           <div ref={sidebar} className="profile-sidebar container-fluid"  >
@@ -184,6 +194,7 @@ const MainProfile = () => {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 };

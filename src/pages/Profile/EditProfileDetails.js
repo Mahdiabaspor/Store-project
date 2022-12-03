@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import useProfile from "../../Hooks/useProfile";
 
@@ -12,6 +12,15 @@ const EditProfile = () => {
   const [city, setcity] = useState("");
   const {user,EditProfile,pending}=useProfile()
   const [Error, setError] = useState({})
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    var userValidator =localStorage.getItem('user') ?? null
+    if(!userValidator){
+        navigate("/login")
+    }
+  }, [])
 
   useEffect(() => {
     let err = {}
