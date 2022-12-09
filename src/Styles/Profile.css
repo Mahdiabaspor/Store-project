@@ -74,6 +74,26 @@ h6,
 p {
   margin: 0;
 }
+
+.profile-sidebar-btn .profile-key{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-sidebar-btn{
+  transition: .40s;
+  background-color: var(--light-red-color);
+}
+.profile-sidebar-btn:hover{
+  background-color: var(--red-color);
+  transform: scale(1.05);
+}
+.profile-sidebar-btn h4{
+  text-align: center;
+  width: 100%;
+  color: white;
+}
 .profile-detail {
   height: 5.5vh;
   border-bottom: 2px solid var(--light-red-color);

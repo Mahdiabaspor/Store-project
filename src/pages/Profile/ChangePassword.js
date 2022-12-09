@@ -8,7 +8,7 @@ const ChangePassword = () => {
   const [Error, setError] = useState({});
   const [oldPassword, setoldPassword] = useState('');
   const [newPassword, setnewPassword] = useState('');
-  const { user, ChangePassword, pending } = useProfile();
+  const { user, ChangePassword, pending,error } = useProfile();
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -88,6 +88,7 @@ const ChangePassword = () => {
                   {Error?.newPassword && <p className="Err-msg text-danger ">{Error.newPassword}</p>}
 
                 </div>
+                {error?.response.data.message ? <p className="text-danger">{error?.response.data.message}</p> :null}
                 <input type="submit" value="submit" className="Login-btn" />
               </form>
             </div>

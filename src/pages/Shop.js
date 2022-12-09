@@ -114,17 +114,17 @@ const Shop = () => {
                           >
                             -
                           </button>
-                          {product.cart.qty === 1 ? (
+                          {product.cart?.qty === 1 ? (
                             <span>
                               <i class="fa-solid fa-trash"></i>
                             </span>
                           ) : (
-                            <span> {product.cart.qty} </span>
+                            <span> {product.cart?.qty} </span>
                           )}
                           <button
                             className="shop-inc-btn"
                             onClick={() => {
-                              if (product.cart.qty < product.countInStock) {
+                              if (product.cart?.qty < product.countInStock) {
                                 incer(product);
                               }
                             }}

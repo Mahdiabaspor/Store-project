@@ -18,6 +18,7 @@ import EditProfile from "../pages/Profile/EditProfileDetails";
 import UploadProfileImage from "../pages/Profile/UploadProfileImage";
 import Home from "../pages/Home";
 import PleaseLogin from "../components/Messages/PleaseLogin"
+import Notfound from "../components/Notfound";
 
 const MainRoutes = () => {
   return (
@@ -39,6 +40,7 @@ const MainRoutes = () => {
       <Route path="profile/change-password" element={<ChangePassword />} />
       <Route path="profile/setting" element={<EditProfile />} />
       <Route path="/forbiden" element={< PleaseLogin/>} />
+      <Route path="*" element={< Notfound/>} />
 
     </Routes>
   );

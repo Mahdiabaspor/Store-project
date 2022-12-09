@@ -5,7 +5,7 @@ import API from "../API/API";
 const useProfile = () => {
 
   const [user, setuser] = useState("");
-  const [err, seterr] = useState(null);
+  const [error, seterror] = useState(null);
   const [pending, setpending] = useState(false);
 
   const GetProfile = async () => {
@@ -18,7 +18,7 @@ const useProfile = () => {
       setuser(res.data.user);
     }
     if (err) {
-      seterr(err);
+      seterror(err);
     }
 
     setpending(false);
@@ -36,7 +36,7 @@ const useProfile = () => {
       }
     }
     if (err) {
-      seterr(err);
+      seterror(err);
     }
 
     setpending(false);
@@ -51,7 +51,7 @@ const useProfile = () => {
       }
     }
     if (err) {
-      seterr(err);
+      seterror(err);
       console.log(err)
     }
     setpending(false);
@@ -69,13 +69,13 @@ const useProfile = () => {
       }
     }
     if (err) {
-      seterr(err);
+      seterror(err);
       console.log(err);
     }
     setpending(false);
   };
 
-  return { user, GetProfile, pending, err, ChangePassword, EditProfile,PostProfileimage };
+  return { user, GetProfile, pending, error, ChangePassword, EditProfile,PostProfileimage };
 };
 
 export default useProfile;

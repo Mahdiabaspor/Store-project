@@ -1,4 +1,4 @@
-import { useEffect ,useRef } from "react";
+import { useEffect  } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { Usecart } from "../../Context/Cartcontext";
@@ -11,7 +11,7 @@ import "../../Styles/Profile.css";
 import { useState } from "react";
 const MainProfile = () => {
 
-  const sidebar = useRef()
+
   const { GetProfile, user, pending } = useProfile();
   const { Cart, Getcard } = Usecart();
   const { Orders, GetAllOrders } = UseOrder();
@@ -47,7 +47,7 @@ const MainProfile = () => {
 
       <div className="row">
       <div className="sideba col-xl-3 d-flex justify-content-center">
-          <div ref={sidebar} className="profile-sidebar container-fluid"  >
+          <div  className="profile-sidebar container-fluid"  >
             <div className="main-detail-profile row p-1">
               <div className="col-4 d-flex align-items-center">
                 <Link to="setting">
@@ -62,6 +62,24 @@ const MainProfile = () => {
               </div>
             </div>
             <div className="profile-details container-fluid">
+              <Link to={"change-password"} className="profile-detail profile-sidebar-btn row  mx-1 my-3">
+                <div className="profile-key col-5 ">
+                <h4>Change Password</h4>
+                </div>
+
+              </Link>
+              <Link to={"setting"} className="profile-detail profile-sidebar-btn row  mx-1 my-3">
+                <div className="profile-key col-5 ">
+                <h4>Edit profile</h4>
+                </div>
+
+              </Link>
+              <Link to={"upload-profile-img"} className="profile-detail profile-sidebar-btn row  mx-1 my-3">
+                <div className="profile-key col-5 ">
+                <h4>Change Avatar</h4>
+                </div>
+
+              </Link>
               <div className="profile-detail row  mx-1 my-3">
                 <div className="profile-key col-5 ">
                 <h4>Email:</h4>
@@ -154,7 +172,7 @@ const MainProfile = () => {
           
 
           }
-          <div className="content rounded p-2 mx-0 mx-md-5">
+          <div className="content rounded p-2 mx-0 mx-md-5 my-2">
             <div className="order-title row d-flex align-items-center   my-2 mb-4">
               <div className="col-9">
                 <h3 className="border-bottom border-secondary pb-3">

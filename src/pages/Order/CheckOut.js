@@ -85,6 +85,15 @@ const CheckOut = () => {
                       <CheckOutItems id={item.product} qty={item.qty} />
                     ))}
                 </div>
+                <div>
+
+                <button className="mx-4"
+                  onClick={() => {
+                    navigate("/card");
+                  }}
+                >
+                  edit
+                </button>
                 <button
                   onClick={() => {
                     SubmitOrderHandeler();
@@ -92,6 +101,7 @@ const CheckOut = () => {
                 >
                   Done
                 </button>
+                </div>
               </div>
             </div>
           ) : (

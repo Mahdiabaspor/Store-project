@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
 
   // login method 
   const login = async (email, password, Path) => {
-    setpending(true);
+    setpending(false);
       // create data object
       const data = {
         password,
@@ -51,6 +51,7 @@ const AuthProvider = ({ children }) => {
       if (err) {
         setuser(null);
         seterror(err);
+        // console.log(err)
       }
       setpending(false);
   };

@@ -22,8 +22,10 @@ const Signup = () => {
   const [email,setemail]=useState('')
   const [username,setusername]=useState('')
   const [password,setpassword]=useState('')
-  const {signup ,Suser,pending}=useAuth()
+  const {signup ,Suser,pending,error}=useAuth()
   const [Error, setError] = useState({})
+  
+
 
   useEffect(() => {
     let err = {}
@@ -80,7 +82,7 @@ const Signup = () => {
       
     {!Suser ? (
             <div className="back">
-            <form className="register-form">
+            <form className="register-form" onSubmit={clickhandeler}>
               <h2>Please Register</h2>
               <div className="inputBox">
 
@@ -138,14 +140,8 @@ const Signup = () => {
             <label htmlFor="mobile">Mobile</label>
             {Error?.phone && <p className="Err-msg text-danger ">{Error.phone}</p>}
               </div>
-            <button
-              className="register-btn"
-              onClick={(e) => {
-                clickhandeler(e);
-              }}
-            >
-              register
-            </button>
+              {error?.response.data.message ? <p className="text-danger">{error?.response.data.message}</p> :null}
+              <input type="submit" value="register" className="Login-btn" />
             <Link to="/login">you already have an accont? <span>login</span></Link>
           </form>
           </div>

@@ -23,8 +23,11 @@ const Login = () => {
   const [Error, setError] = useState({});
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-
-
+  
+  
+  if(error){
+    console.log(error.response.data.status);
+  }
   useEffect(()=>{
     let err = {};
     if (email.length === 0 || password.length === 0){
@@ -45,13 +48,14 @@ const Login = () => {
   const SubmitHandeler = async (e) => {
     e.preventDefault();
 
-    setError({})
+    // setError({})
 
     if (Object.keys(Error).length !== 0) {
       return;
     }
 
     await login(email, password);
+
   };
 
   return (
@@ -89,6 +93,7 @@ const Login = () => {
                   <label htmlFor="password">Password</label>
                   {Error?.password && <p className="Err-msg text-danger ">{Error.password}</p>}
                 </div>
+              {error?.response.data.status===401 ? <p className="text-danger">Wrong Username Our Password !!</p> :null}
     
                 <input type="submit" value="submit" className="Login-btn" />
                 <Link to="/register">
@@ -104,7 +109,7 @@ const Login = () => {
           )}
         </div>
       )}
-      {error && error.message}
+
 
     </section>
   );

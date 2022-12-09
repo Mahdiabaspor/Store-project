@@ -22,7 +22,7 @@ const Header = () => {
         <div className="header-Links col-lg-3 col-3 d-flex justify-content-center align-items-center">
           <Link to="/card" className="card d-lg-block d-none">
             <i className="fa-solid fa-cart-shopping icon"></i>
-            {Cart && <div className="card-count">{Cart.items.length}</div>}
+            {Cart?.items && <div className="card-count">{Cart.items.length}</div>}
           </Link>
           {user ? (
             <ButtonDarkExample />

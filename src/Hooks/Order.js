@@ -6,7 +6,7 @@ const UseOrder = () => {
 
     const [Order, setOrder]= useState(null)
     const [pending, setpending] = useState(false)
-    const [err, seterr] = useState(null)
+    const [error, seterror] = useState(null)
     const [Orders, setOrders]= useState(null)
     const SubmitOrder = async (orderItems, ShippingAddress) => {
 
@@ -33,7 +33,7 @@ const UseOrder = () => {
             localStorage.removeItem('ShipingAdress')
         }
         if(err){
-            seterr(err)
+            seterror(err)
         }
 
         setpending(false)
@@ -46,7 +46,7 @@ const UseOrder = () => {
             setOrders(res.data)
         }
         if(err){
-            seterr(err)
+            seterror(err)
         }
         setpending(false)
     }
@@ -57,11 +57,11 @@ const UseOrder = () => {
             setOrder(res.data)
         }
         if(err){
-            seterr(err)
+            seterror(err)
         }
         setpending(false)
     }
-    return { Order, pending, err, SubmitOrder, GetAllOrders, GetOrderBYId, Orders };
+    return { Order, pending, error, SubmitOrder, GetAllOrders, GetOrderBYId, Orders };
 }
  
 export default UseOrder;

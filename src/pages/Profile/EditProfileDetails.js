@@ -10,10 +10,14 @@ const EditProfile = () => {
   const [gender, setgender] = useState('male');
   const [age, setage] = useState("");
   const [city, setcity] = useState("");
-  const {user,EditProfile,pending}=useProfile()
+  const {user,EditProfile,pending,error}=useProfile()
   const [Error, setError] = useState({})
 
   const navigate = useNavigate()
+
+if(error){
+  console.log(error.response.data.message)
+}
 
   useEffect(() => {
     var userValidator =localStorage.getItem('user') ?? null
@@ -55,12 +59,12 @@ const EditProfile = () => {
     setError(err)
   }, [firstname, lastname, age, city])
   const submitHandeler = async(e) => {
+    e.preventDefault();
     if (Object.keys(Error).length !== 0) {
       console.log(Error)
       return
     }
 
-    e.preventDefault();
     const data = {
       firstname ,
       lastname ,
@@ -145,6 +149,7 @@ const EditProfile = () => {
             <label htmlFor="city">city</label>
             {Error?.city && <p className="Err-msg text-danger ">{Error.city}</p>}
           </div>
+          {error?.response.data.message ? <p className="text-danger">{error?.response.data.message}</p> :null}
           <input type="submit" value="submit" className="Login-btn" />
         </form>
       </div>
