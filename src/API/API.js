@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Cookies } from "react-cookie";
 
-const baseURL = "http://kzico.runflare.run/";
+const baseURL = "https://kzico.runflare.run/";
 
 const API = async (url , method = "GET", body = {},headers = {} ) =>{
 
