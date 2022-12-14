@@ -10,9 +10,7 @@ const Header = () => {
 
   const { user } = useAuth();
   const { Cart }= Usecart()
-  if (Cart){
-    console.log(Cart)
-  }
+
 
   
   

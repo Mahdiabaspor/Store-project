@@ -15,9 +15,7 @@ const EditProfile = () => {
 
   const navigate = useNavigate()
 
-if(error){
-  console.log(error.response.data.message)
-}
+
 
   useEffect(() => {
     var userValidator =localStorage.getItem('user') ?? null
@@ -61,7 +59,7 @@ if(error){
   const submitHandeler = async(e) => {
     e.preventDefault();
     if (Object.keys(Error).length !== 0) {
-      console.log(Error)
+
       return
     }
 
@@ -74,9 +72,7 @@ if(error){
     };
     await EditProfile(data)
   };
-  if(user){
-    console.log(user)
-  }
+
   return (
     <div className="edit-profile">
         {pending ? <Loading/> : 

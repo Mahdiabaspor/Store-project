@@ -75,7 +75,7 @@ const ShipingAdressfrom = () => {
     const NextHandler = (e)=>{
 
       if (Object.keys(Error).length !== 0) {
-        console.log(Error)
+
         return
       }
 

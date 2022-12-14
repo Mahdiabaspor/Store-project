@@ -26,7 +26,7 @@ const Login = () => {
   
   
   if(error){
-    console.log(error.response.data.status);
+
   }
   useEffect(()=>{
     let err = {};

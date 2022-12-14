@@ -15,7 +15,6 @@ const AllOrders = () => {
         GetAllOrders()
     },[])
 
-    console.log(Orders)
     return ( <div className="all-orders">
         {Orders && Orders.map((order)=>(
             <div className="order-item" key={order._id}>

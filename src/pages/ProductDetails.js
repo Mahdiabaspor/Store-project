@@ -40,8 +40,8 @@ const ProductDetails = () => {
         product.cart = Cart.items[index];
         return true;
       };
-  console.log(Product);
-  console.log(id);
+
+
   return (
     <div className="product-details container-fluid ">
       {pending ? (

@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
       if (err) {
         setuser(null);
         seterror(err);
-        // console.log(err)
+
       }
       setpending(false);
   };
@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
 
     // check if response
     if (res) {
-      console.log(res.data)
+
       setmassage(true);
       setisSignup(true)
       setSuser(res.data.status);
@@ -93,7 +93,7 @@ const AuthProvider = ({ children }) => {
 
       setuser(null);
       seterror(null);
-      console.log("logout completed successfully");
+
 
       // delete user from local storage
       localStorage.removeItem("user");
@@ -101,7 +101,7 @@ const AuthProvider = ({ children }) => {
     }
     if(!token){
       localStorage.removeItem("user");
-      console.log("error occurred while logging out");
+
     }
     setpending(false);
   };

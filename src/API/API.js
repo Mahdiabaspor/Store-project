@@ -4,6 +4,9 @@ import { Cookies } from "react-cookie";
 const baseURL = "http://kzico.runflare.run/";
 
 const API = async (url , method = "GET", body = {},headers = {} ) =>{
+
+
+
     const cookies = new Cookies();
     const token = await cookies.get("token");
     if(token){

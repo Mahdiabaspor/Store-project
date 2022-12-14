@@ -27,12 +27,12 @@ const UploadProfileImage = () => {
     if (res) {
       if (res.data.status === 200) {
         setuser(res.data.status);
-        console.log(res.data);
+
       }
     }
     if (err) {
       seterr(err);
-      console.log(err);
+
     }
     setpending(false);
   };

@@ -52,7 +52,7 @@ const useProfile = () => {
     }
     if (err) {
       seterror(err);
-      console.log(err)
+
     }
     setpending(false);
   };
@@ -70,7 +70,7 @@ const useProfile = () => {
     }
     if (err) {
       seterror(err);
-      console.log(err);
+
     }
     setpending(false);
   };

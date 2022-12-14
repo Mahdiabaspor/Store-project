@@ -44,12 +44,11 @@ const ChangePassword = () => {
 
 
     if (Object.keys(Error).length !== 0) {
-      console.log(Error);
+
       return;
     }
     ChangePassword(oldPassword, newPassword);
-    console.log(oldPassword);
-    console.log(newPassword);
+
   };
   return (
     <div className="changepassword">

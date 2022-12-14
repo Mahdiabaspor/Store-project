@@ -62,7 +62,7 @@ const Signup = () => {
     e.preventDefault();
 
     if (Object.keys(Error).length !== 0) {
-      console.log(Error)
+
       return
     }
 
@@ -73,7 +73,7 @@ const Signup = () => {
       mobile
     };
     
-    console.log(data)
+
     await signup(data)
   }
   return (

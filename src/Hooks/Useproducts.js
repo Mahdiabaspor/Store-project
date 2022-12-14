@@ -15,7 +15,7 @@ const useProducts = () => {
         const {res,err}= await API(`product/`,'GET' )
 
         if(res){
-            console.log(res.data)
+
             setErr(null)
             setProducts(res.data)
         }

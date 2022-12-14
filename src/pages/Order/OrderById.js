@@ -16,10 +16,8 @@ const OrderById = () => {
   }
     GetOrderBYId(id);
   }, []);
-  if (Order) {
-    console.log(Order);
-  }
-  console.log(id);
+
+
   return (
     <div className="bk">
       <div className="shippings container-fluid">

@@ -32,13 +32,11 @@ const MainProfile = () => {
     GetAllOrders();
     if( !user?.city || !user?.firstname || !user?.lastname || !user?.gender){
       setWarningMsg(true);
-      console.log(user.city)
+
 
     }
   }, []);
-  if (user) {
-    console.log(user);
-  }
+
 
 
   return (

@@ -20,7 +20,7 @@ function App() {
     GetAllOrders()
   },[])
   useEffect(()=>{
-    console.log(error)
+
     if(error?.response?.data.message === "please log in" || error?.response?.data.message === "jwt malformed"){
 
       cookies.set("token", "", { expires: new Date() });
@@ -31,7 +31,7 @@ function App() {
         localStorage.removeItem("user");
       }
     }
-    // console.log(Orders)
+
   },[Orders,error])
 
   return (
