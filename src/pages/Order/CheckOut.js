@@ -82,7 +82,7 @@ const CheckOut = () => {
                 <div className="items-checkout">
                   {cart &&
                     cart.items.map((item) => (
-                      <CheckOutItems id={item.product} qty={item.qty} />
+                      <CheckOutItems id={item.product} qty={item.qty} key={item.product} />
                     ))}
                 </div>
                 <div>
