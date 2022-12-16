@@ -81,7 +81,7 @@ const ProductDetails = () => {
                         <button  className="shop-inc-btn" onClick={() => reducer(Product)}>-</button>
                         {Product.cart?.qty === 1 ? (
                           <span>
-                            <i class="fa-solid fa-trash"></i>
+                            <i className="fa-solid fa-trash"></i>
                           </span>
                         ) : (
                           <span> {Product.cart.qty} </span>

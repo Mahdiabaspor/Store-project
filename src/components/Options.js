@@ -13,7 +13,7 @@ const Options = () => {
             <p className="opt-ptext">Fast delivery</p>
         </div>
         <div className="col">
-          <i class="fa-solid fa-money-bill  bg-success"></i>
+          <i className="fa-solid fa-money-bill  bg-success"></i>
           <p className="opt-ptext">Massive offer</p>
         </div>
         <div className="col">

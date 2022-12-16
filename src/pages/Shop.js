@@ -79,7 +79,7 @@ const Shop = () => {
                 className="product   col-xl-3 col-lg-4 col-md-6 col-sm-12 container-fluid  "
                 key={product._id}
               >
-                <div className="continer-pro d-flex d-md-grid flex-row-reverse row m-0">
+                <div className="continer-pro d-flex d-md-grid flex-row-reverse row m-0" key={product._id}>
                   <div className="col-5 col-md-12 d-flex">
                     <Link
                       className="d-flex align-items-center"
@@ -97,9 +97,9 @@ const Shop = () => {
                   <div className="p-and-button-shop col-7 col-md-12 m-0 p-0  ">
                     <h4 className="">{product.name}</h4>
                     {product.countInStock > 0 ? (
-                      <detail className="instock">
+                      <p className="instock">
                         {product.countInStock + " in access"}
-                      </detail>
+                      </p>
                     ) : (
                       <detail className="instock">not in stock</detail>
                     )}
@@ -116,7 +116,7 @@ const Shop = () => {
                           </button>
                           {product.cart?.qty === 1 ? (
                             <span>
-                              <i class="fa-solid fa-trash"></i>
+                              <i className="fa-solid fa-trash"></i>
                             </span>
                           ) : (
                             <span> {product.cart?.qty} </span>

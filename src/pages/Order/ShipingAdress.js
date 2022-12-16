@@ -64,12 +64,12 @@ const ShipingAdressfrom = () => {
 
 
     // check and get shiping adress exist
-    const shipingAdress=JSON.parse(localStorage.getItem('ShipingAdress')) || null
     
+    const shipingAdress=JSON.parse(localStorage.getItem('ShipingAdress')) || null
     // change state to shiping adress after any edit and reaload
     useEffect(() => {
       setshipingAdressPage(shipingAdress)
-    }, [shipingAdress])
+    }, [])
     
     // next page handeler after write shiping adress
     const NextHandler = (e)=>{

@@ -45,7 +45,7 @@ const Cartitem = ({ id, quantity }) => {
               <button onClick={() => reducer(Product)}>-</button>
               {quantity === 1 ? (
                 <span>
-                  <i class="fa-solid fa-trash"></i>
+                  <i className="fa-solid fa-trash"></i>
                 </span>
               ) : (
                 <span> {quantity} </span>

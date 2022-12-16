@@ -16,8 +16,8 @@ function ButtonDarkExample() {
     <>
       <DropdownButton
         id="dropdown-button-dark-example2"
-        variant=""
-        menuVariant=""
+        variant="red"
+        // menuVariant=""
         title={(            
         <div to="/profile" className="profile-dropdown">
           <i className="fa-solid fa-user "></i> <span className="d-md-inline d-none">Profile</span>
