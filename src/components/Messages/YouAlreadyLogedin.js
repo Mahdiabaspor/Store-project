@@ -1,13 +1,22 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import useAuth from "../../auth";
+
 import Logout from "../../pages/auth/Logout";
+
+import { GetUserSelector ,loguout } from "../../Redux/Features/Auth/AuthSlicer";
+import { useNavigate } from "react-router-dom";
 
 
 const AlreadyLogined = () => {
-  const { logout, error, pending } = useAuth();
-  const logouthandeler = async () => {
-    await logout();
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+  const user = useSelector(GetUserSelector)
+  const logouthandeler = () => {
+    dispatch(loguout())
+    navigate('/')
   };
+
   return (
     <div className="log-out">
       <h2>you already loged in !</h2>
@@ -16,7 +25,7 @@ const AlreadyLogined = () => {
       </p>
       <button onClick={()=>{
         logouthandeler();
-        <Logout error={error} pending={pending}/>
+        <Logout/>
 
       }}>Logout</button>
     </div>

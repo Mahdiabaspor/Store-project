@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ".././Styles/Sections/Header.css";
 import ButtonDarkExample from "../components/dropDown";
 // import { useEffect, useState } from "react";
-import { useAuth } from "../Context/AuthContext";
+
 import { Usecart } from "../Context/Cartcontext";
+import { GetUserSelector } from "../Redux/Features/Auth/AuthSlicer";
 
 const Header = () => {
 
-  const { user } = useAuth();
+  const user = useSelector(GetUserSelector)
   const { Cart }= Usecart()
 
 

@@ -3,12 +3,14 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import { Link, useNavigate } from 'react-router-dom';
 
 import "../Styles/DropDown.css";
-import { useAuth } from "../Context/AuthContext";
+
+import { logout } from '../Redux/Features/Auth/AuthSlicer';
+import { useDispatch } from 'react-redux';
 function ButtonDarkExample() {
   const navigate = useNavigate()
-  const {logout}= useAuth()
-  const logouthandeler = async () => {
-    await logout();
+  const dispatch = useDispatch()
+  const logouthandeler =  () => {
+     dispatch(logout())
     navigate('/')
 
   };

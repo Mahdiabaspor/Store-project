@@ -1,13 +1,15 @@
 import { useEffect, useMemo } from "react";
 import { Cookies } from "react-cookie";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 // components
 import Cartitem from "../../components/CartItem";
-import { useAuth } from "../../Context/AuthContext";
+
 
 // context
 import { Usecart } from "../../Context/Cartcontext";
+import { GetUserSelector } from "../../Redux/Features/Auth/AuthSlicer";
 
 // styles
 import "../../Styles/Cart.css";
@@ -17,7 +19,7 @@ const Card = () => {
   // hooks
   const Navigate = useNavigate();
   const { Cart, pending, Err, Getcard } = Usecart();
-  const { user } = useAuth();
+  const user = useSelector(GetUserSelector)
 
   const NextPageHandler = () => {
     // check if user loged in

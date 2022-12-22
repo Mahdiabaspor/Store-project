@@ -1,14 +1,17 @@
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Context/AuthContext";
+import { useAuth } from "../../Auth/Signup";
+import { GetUserSelector ,logout } from "../../Redux/Features/Auth/AuthSlicer";
 import "../../Styles/Login.css";
 
 
 const Logout = () => {
   
   const navigate = useNavigate()
-  const { logout , user } = useAuth();
+  const dispatch = useDispatch()
+  const user = useSelector(GetUserSelector)
   useEffect(()=>{
     if(!user){
       navigate('/')
@@ -16,8 +19,9 @@ const Logout = () => {
   },[user])
   const [cookies ] = useCookies(["token"]);
 
-  const logouthandeler = async () => {
-    await logout();
+
+  const logouthandeler = () => {
+    dispatch(logout())
     navigate('/')
   };
   return (

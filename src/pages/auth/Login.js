@@ -1,14 +1,22 @@
+
 import { useEffect, useState } from "react";
-import { useAuth } from "../../Context/AuthContext";
+
 import "../../Styles/Login.css";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
+import { 
+  GetUserErrorSelector,
+  GetUserLoadingSelector,
+  GetUserSelector,
+  GetUserStatusSelector ,
+  authLoginThunk } from "../../Redux/Features/Auth/AuthSlicer";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const navigate = useNavigate();
   const [cookies] = useCookies(["token"]);
-  const { login, error, user, pending } = useAuth();
+
   const confirmation = localStorage.getItem("confirmationHandeler") ?? null;
   useEffect(() => {
     if (user && confirmation) {
@@ -23,11 +31,13 @@ const Login = () => {
   const [Error, setError] = useState({});
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  
-  
-  if(error){
+  const error = useSelector(GetUserErrorSelector);
+  const user = useSelector(GetUserSelector);
+  const pending = useSelector(GetUserLoadingSelector);
+  // const status = useSelector(GetUserStatusSelector);
 
-  }
+
+
   useEffect(()=>{
     let err = {};
     if (email.length === 0 || password.length === 0){
@@ -44,19 +54,34 @@ const Login = () => {
     setError(err)
   },[email,password])
 
-
+const dispatch = useDispatch()
   const SubmitHandeler = async (e) => {
     e.preventDefault();
 
     // setError({})
 
-    if (Object.keys(Error).length !== 0) {
-      return;
-    }
+    // if (Object.keys(Error).length !== 0) {
+    //   return;
+    // }
 
-    await login(email, password);
+    const data = {
+      email ,
+      password
+    }
+    localStorage.setItem('ur',JSON.stringify(data))
+     dispatch(authLoginThunk(data))
 
   };
+  let u = JSON.parse(localStorage.getItem("ur") ?? null) 
+  useEffect(()=>{
+    if (u){
+
+      setemail(u.email)
+
+      setpassword(u.password)
+      console.log(u)
+    }
+  },[])
 
   return (
     <section className="login">
@@ -93,7 +118,7 @@ const Login = () => {
                   <label htmlFor="password">Password</label>
                   {Error?.password && <p className="Err-msg text-danger ">{Error.password}</p>}
                 </div>
-              {error?.response.data.status===401 ? <p className="text-danger">Wrong Username Our Password !!</p> :null}
+              {error ? <p className="text-danger">Wrong Username Our Password !!</p> :null}
     
                 <input type="submit" value="submit" className="Login-btn" />
                 <Link to="/register">

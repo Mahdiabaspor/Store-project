@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../Context/AuthContext";
+import  Signup  from "../../Auth/Signup";
 import '../../Styles/Login.css'
 import { useCookies} from "react-cookie";
 import {  useNavigate  } from "react-router-dom";
 import WelcomeRegister from "../../components/Messages/WellcomeRegister";
 import Loading from "../../components/Loading";
 
-const Signup = () => {
+const SignupPage = () => {
   const [cookies] = useCookies(["token"]);
   const navigate = useNavigate()
 
@@ -17,41 +17,41 @@ const Signup = () => {
       }
       // eslint-disable-next-line
   },[cookies.token])
-  
   const [mobile,setmobile]=useState('')
   const [email,setemail]=useState('')
   const [username,setusername]=useState('')
   const [password,setpassword]=useState('')
-  const {signup ,Suser,pending,error}=useAuth()
+  const {signup ,Suser,pending,error}=Signup()
   const [Error, setError] = useState({})
   
 
 
+
   useEffect(() => {
     let err = {}
-    if (email.length === 0 || password.length === 0 || username.length=== 0 || mobile.length === 0){
+    if (email?.length === 0 || password?.length === 0 || username?.length=== 0 || mobile?.length === 0){
       err.noAccses = true
   }
     // check username
-    if (username.length < 5 && username.length >= 1) {
+    if (username?.length < 5 && username?.length >= 1) {
       err.username = "username must be more than 5 charecters"
     }
 
     // check email
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    if (!emailRegex.test(email) && email.length >= 1) {
+    if (!emailRegex.test(email) && email?.length >= 1) {
       err.email = "Email is invalid"
     }
 
     // check password
     const passRegex = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,50})$/
-    if (!passRegex.test(password) && password.length >= 1) {
+    if (!passRegex.test(password) && password?.length >= 1) {
       err.password = "Password has  Invalid format"
     }
     
     // check mobile
     const phoneRegex = /^09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}$/
-    if (!phoneRegex.test(mobile) && mobile.length >= 1) {
+    if (!phoneRegex.test(mobile) && mobile?.length >= 1) {
       err.phone = "invalid phone number"
     }
 
@@ -72,6 +72,7 @@ const Signup = () => {
       password,
       mobile
     };
+
     
 
     await signup(data)
@@ -159,4 +160,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupPage;

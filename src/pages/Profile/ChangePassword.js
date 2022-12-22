@@ -17,7 +17,6 @@ const ChangePassword = () => {
       navigate("/forbiden")
     }
   }, [])
-  
 
   useEffect(()=>{
     let err = {};
